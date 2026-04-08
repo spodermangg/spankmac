@@ -10,7 +10,7 @@ For Apple Silicon MacBooks. Detect physical hits using the internal acceleromete
 ## Quick Start
 
 ```bash
-Download latest release.  
+Download & unzip latest release.  
 Drag into Applications folder.  
 Run the Application and HF.  
 ```
