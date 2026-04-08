@@ -22,7 +22,7 @@ Run the Application and HF.
 If you experience "app is broken" or similar errors, you can use these workarounds:
 
 - **Right-click -> Open**: Instead of double-clicking, right-click the app and select "Open." This adds an "Open anyway" button.
-- **Terminal**: Run `xattr -d com.apple.quarantine /path/to/spankmac` to manually remove the security block.
+- **Terminal**: If the above step doesn't wowrk, run `xattr -d com.apple.quarantine /path/to/spankmac` in terminal.
 
 ## Modes
 
