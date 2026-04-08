@@ -17,10 +17,10 @@ Run the Application and HF.
 
 ## Modes
 
-- **Default**: Random pain/protest sounds.
+- **Default**: Random pain sounds.
 - **Sexy**: Escalating intensity based on slap frequency.
-- **Halo**: Halo death sound effects.
-- **Lizard**: Escalating lizard-themed responses.
+- **Halo**: Halo sound effects.
+- **Lizard**: Lizard.
 - **Half-Life 2**: Sounds from Half-Life 2.
 
 ## Credits
