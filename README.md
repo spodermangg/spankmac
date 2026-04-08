@@ -1,5 +1,7 @@
 # SpankMac
 
+![SpankMac Screenshot](assets/screenshot.png)
+
 For Apple Silicon MacBooks. Detect physical hits using the internal accelerometer and play audio. [Based on taigrr/spank](https://github.com/taigrr/spank), added custom features, including a custom-made GUI.
 
 ## Prerequisites
