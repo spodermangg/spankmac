@@ -21,7 +21,7 @@ Run the Application and HF.
 - **Sexy**: Escalating intensity based on slap frequency.
 - **Halo**: Halo death sound effects.
 - **Lizard**: Escalating lizard-themed responses.
-- **Half-Life 2**: Random sounds from Half-Life 2.
+- **Half-Life 2**: Sounds from Half-Life 2.
 
 ## Credits
 Sensor reading and vibration detection ported from olvvier/apple-silicon-accelerometer.
