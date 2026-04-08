@@ -25,7 +25,7 @@ Run the Application and HF.
 
 ## Credits
 Sensor reading and vibration detection ported from olvvier/apple-silicon-accelerometer.
-Spank by [taigrr/spank](https://github.com/
+Spank by [taigrr/spank](https://github.com/taigrr/spank)
 
 ## License
 
