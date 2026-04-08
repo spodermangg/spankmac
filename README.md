@@ -17,6 +17,13 @@ Drag into Applications folder.
 Run the Application and HF.  
 ```
 
+## The "Indie" Route (No Signing)
+
+If you experience "Developer cannot be verified" errors, you can use these workarounds:
+
+- **Right-click -> Open**: Instead of double-clicking, right-click the app and select "Open." This adds an "Open anyway" button.
+- **Terminal**: Run `xattr -d com.apple.quarantine /path/to/spankmac` to manually remove the security block.
+
 ## Modes
 
 - **Default**: Random pain sounds.
