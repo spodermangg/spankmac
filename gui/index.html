@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpankMac Control Panel</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div id="flash-overlay"></div>
+    <div class="app-container">
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <h1><img src="/logo.png" alt="logo" style="width:28px;height:28px;border-radius:6px;margin-right:8px;vertical-align:bottom;" onerror="this.style.display='none'">SpankMac</h1>
+                <div class="status-badge" id="status-badge">
+                    <span class="status-dot"></span>
+                    <span id="status-text">Connecting...</span>
+                </div>
+            </header>
+
+            <section class="controls-section">
+                <h3>Controls</h3>
+
+                <div class="control-group">
+                    <div class="label-row">
+                        <label for="theme-select">Theme</label>
+                    </div>
+                    <select id="theme-select" class="custom-select">
+                        <option value="auto">Auto (System)</option>
+                        <option value="light">Light Mode</option>
+                        <option value="dark">Dark Mode</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <div class="label-row">
+                        <label for="soundpack">Soundpack</label>
+                    </div>
+                    <select id="soundpack" class="custom-select">
+                        <option value="pain">Pain (Default)</option>
+                        <option value="sexy">Sexy (Escalating)</option>
+                        <option value="halo">Halo (Random)</option>
+                        <option value="lizard">Lizard (Escalating)</option>
+                        <option value="halflife2">Half-Life 2 (Random)</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <div class="label-row">
+                        <label for="amplitude">Sensitivity Threshold</label>
+                        <span class="value-display" id="amp-val">0.05</span>
+                    </div>
+                    <input type="range" id="amplitude" min="0.01" max="1.0" step="0.01" value="0.05">
+                    <small>Lower = more sensitive</small>
+                </div>
+
+                <div class="control-group">
+                    <div class="label-row">
+                        <label for="cooldown">Cooldown (ms)</label>
+                        <span class="value-display" id="cooldown-val">750</span>
+                    </div>
+                    <input type="range" id="cooldown" min="100" max="3000" step="50" value="750">
+                    <small>Delay between responses</small>
+                </div>
+
+                <div class="control-group">
+                    <div class="label-row">
+                        <label for="speed">Playback Speed</label>
+                        <span class="value-display" id="speed-val">1.0x</span>
+                    </div>
+                    <input type="range" id="speed" min="0.5" max="3.0" step="0.1" value="1.0">
+                </div>
+
+                <div class="control-group toggle-group">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="volume-scaling">
+                        <span class="slider round"></span>
+                    </label>
+                    <div class="toggle-label">
+                        <span>Volume Scaling</span>
+                        <small>Harder slaps = louder audio</small>
+                    </div>
+                </div>
+
+                <div class="control-group toggle-group">
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="pause-toggle">
+                        <span class="slider round slider-danger"></span>
+                    </label>
+                    <div class="toggle-label">
+                        <span>Pause Listener</span>
+                        <small>Temporarily disable slap detection</small>
+                    </div>
+                </div>
+            </section>
+        </aside>
+
+        <main class="main-content">
+            <header class="main-header">
+                <h2>Activity Feed</h2>
+                <div class="stats">
+                    <div class="stat-box">
+                        <span class="stat-value" id="stat-total">0</span>
+                        <span class="stat-label">Total Slaps</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value" id="stat-max">0.00g</span>
+                        <span class="stat-label">Max Power</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="feed-container" id="feed">
+                <div class="empty-state">
+                    <div class="empty-icon">👋</div>
+                    <h3>Waiting for slaps...</h3>
+                    <p>Hit your MacBook firmly on the palm rests to trigger a response.</p>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpankMac — Make your MacBook yell</title>
+    <!-- SEO Optimization -->
+    <meta name="description"
+        content="A physical interaction utility for Apple Silicon MacBooks. Detect slaps using the internal accelerometer and play custom audio responses.">
+    <meta name="theme-color" content="#000000">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;900&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --bg: #000;
+            --accent: #ed4245;
+            --text: #fff;
+            --muted: #777;
+            --card: rgba(255, 255, 255, 0.05);
+            --border: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: var(--bg);
+            color: var(--text);
+            font-family: 'Inter', sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+            overflow: hidden;
+            text-align: center;
+        }
+
+        .glow {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(237, 66, 69, 0.12) 0%, transparent 70%);
+            z-index: -1;
+            filter: blur(120px);
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: clamp(3.5rem, 12vw, 6rem);
+            line-height: 0.9;
+            letter-spacing: -3px;
+            margin-bottom: 0.5rem;
+            font-weight: 900;
+            user-select: none;
+        }
+
+        h1 span {
+            color: var(--accent);
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--muted);
+            max-width: 480px;
+            margin-bottom: 2.5rem;
+            line-height: 1.5;
+        }
+
+        .download-btn {
+            background: var(--accent);
+            color: #fff;
+            padding: 1rem 2.5rem;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 800;
+            font-size: 1.1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(237, 66, 69, 0.3);
+            display: inline-block;
+        }
+
+        .download-btn:hover {
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 15px 40px rgba(237, 66, 69, 0.4);
+            filter: brightness(1.1);
+        }
+
+        .steps {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 4rem;
+            color: var(--muted);
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .step {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .packs {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 600px;
+        }
+
+        .pack {
+            padding: 0.4rem 1.1rem;
+            border-radius: 50px;
+            border: 1px solid var(--border);
+            color: var(--muted);
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: all 0.2s;
+            cursor: default;
+        }
+
+        .pack:hover {
+            border-color: var(--accent);
+            color: var(--text);
+            background: rgba(237, 66, 69, 0.05);
+        }
+
+        .nav {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            right: 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 10;
+        }
+
+        .logo-wrap {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            color: var(--text);
+        }
+
+        .logo-img {
+            width: 24px;
+            height: 24px;
+            border-radius: 5px;
+        }
+
+        .logo-text {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 900;
+            font-size: 1.1rem;
+            letter-spacing: -1px;
+        }
+
+        .github {
+            color: var(--muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .github:hover {
+            color: var(--text);
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 2rem;
+            font-size: 0.7rem;
+            color: #222;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            user-select: none;
+        }
+
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 3.5rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .install {
+                width: 100%;
+                font-size: 0.8rem;
+            }
+
+            .glow {
+                width: 400px;
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="glow" aria-hidden="true"></div>
+    <div class="nav">
+        <a href="#" class="logo-wrap">
+            <img src="logo.png" alt="" class="logo-img" onerror="this.style.display='none'">
+            <span class="logo-text">SPANKMAC</span>
+        </a>
+        <a href="https://github.com/spodermangg/spankmac" class="github">GitHub</a>
+    </div>
+
+    <main>
+        <h1>SpankMac<span>.</span></h1>
+        <p class="subtitle">A minimalist slap detector for M-series MacBooks. Physical hits trigger audio playback
+            responses.</p>
+
+        <a href="https://github.com/spodermangg/spankmac/releases/latest" class="download-btn">Download for macOS</a>
+        <div class="steps">
+            <div class="step">Download latest release</div>
+            <div class="step">Drag to Applications</div>
+            <div class="step">Run the Application and HF</div>
+        </div>
+
+        <div class="packs">
+            <div class="pack">Default</div>
+            <div class="pack">Sexy</div>
+            <div class="pack">Halo</div>
+            <div class="pack">Lizard</div>
+            <div class="pack">Half-Life 2</div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        Requires Apple Silicon
+    </footer>
+</body>
+
+</html>
